@@ -32,10 +32,27 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-        
+        if(leftBumper == true) {
+		System.out.println("Left Bumper Pressed!"); //full speed ahead
     }
-    
-    
+    else {
+	    j1Y_axis = j1Y_axis/2; //goes half speed
+	    j2Y_axis = j2Y_axis/2;
+	    robotSpeed = robotSpeed/2;
+    }
+    if(xButton == true && yButton == true) {
+    		System.out.println("Do a Barrel Roll");
+    		upperLeftMotor.set(1);
+    		lowerLeftMotor.set(1);
+    		upperRightMotor.set(-1);
+    		lowerRightMotor.set(-1);
+    		Timer.delay(1);
+    		upperLeftMotor.set(0);
+    		lowerLeftMotor.set(0);
+    		upperRightMotor.set(0);
+    		lowerRightMotor.set(0);
+    }
+
     public void testPeriodic() {
 // tank drive controls
     	upperLeftMotor.set(J1Y_axis); //control left driving motors
